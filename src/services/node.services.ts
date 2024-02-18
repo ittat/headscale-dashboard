@@ -15,6 +15,9 @@ export const nodeServices = {
         return res ? res.nodes : null
     },
     addNode: async (user?: string, key?: string) => {
+        if(!key.startsWith("mkey:")){
+            key = "mkey:" +key
+        }z
         const res = await fetcher<{ node: Node.v1Node }>({
             url: `/node/register`,
             method: "POST",
